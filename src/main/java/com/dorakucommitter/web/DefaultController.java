@@ -1,12 +1,17 @@
 package com.dorakucommitter.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+import com.dorakucommitter.service.GnaviApiService;
 
-public class DefaultController 
+@Controller
+public class DefaultController
 {
+    @Autowired
+    GnaviApiService gnaviApiService;
+
     /**
      * http://<IP address or FQDN>:port番号/の表示処理
      * テンプレートファイルは、
@@ -17,6 +22,7 @@ public class DefaultController
     @RequestMapping("/")
     public String index()
     {
+        this.gnaviApiService.restSearch();
         return "default/index";
     }
 }
