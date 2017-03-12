@@ -15,7 +15,7 @@ suzuki
 
 ## Gradle
 
-    $ gradle package
+    $ gradle build
     $ java -jar build\libs\nomee-0.0.1-SNAPSHOT.jar
 
 

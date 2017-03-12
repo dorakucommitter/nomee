@@ -1,56 +1,25 @@
-
 <!DOCTYPE HTML>
 <html xmlns = "http://www.w3.org/1999/xhtml"
- xmlns:th="http://www.thymeleaf.org"
- xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
- <meta http-equiv="Content-Style-Type" content="text/css" />
- <meta http-equiv="Content-Script-Type" content="text/javascript" />
-<title>JSONPでレストラン検索APIの結果を取得するサンプルコード</title>
-<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
-<script type="text/javascript" th:inline="javascript">
- /<![CDATA[/
-jQuery(function($){
-   "use strict";    $(".js--apply").on("click", function(eve){
-       $.get({
-               url:      "http://api.gnavi.co.jp/RestSearchAPI/20150630/",
-               dataType: "jsonp",
-               jsonp:    "callback",
-               timeout:  3000,
-           },
-           {
-               keyid:     $(".js--key").val(),
-               format:    "json",
-               latitude:  35.670083,
-               longitude: 139.763267,
-               range:     1,
-           })
-       .then(
-           function(res){
-               if(res.error) throw new Error(res.error.code + ": " + res.error.message);
-               if(!res.total_hit_count) return $.Deferred().reject("検索結果が見つかりませんでした。");                return res;
-           },
-           function(jqXHR){
-               throw new Error(jqXHR.status + ": " + jqXHR.statusText);
-           })
-       .then(function(res){
-           alert(res.total_hit_count + "件の結果が見つかりました。");            alert($(res.rest)
-               .map(function(){
-                   return [this.id, this.name, this.access.line, this.access.station, this.access.walk].join(" ") + "分";
-               })
-               .toArray()
-               .join("\n"));
-       })
-       .catch(function(err){
-           alert((err && err.stack) || err);
-       });
-   });
-});
-/]]>/
-</script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <title>ぐるなびレストラン検索結果</title>
 </head>
 <body>
-<input type="text" placeholder="enter your access key here" class="js--key"/><input type="button" value="apply" class="js--apply"/>
+
+  <h3>ぐるなび検索結果</h3>
+  <table border="1" cellspacing="1">
+    <tr th:each="item, stat : ${restData}" th:object="${item}">
+      <td th:text="*{id}">id</td>
+      <td th:text="*{name}">id</td>
+      <td th:text="*{line}">id</td>
+      <td th:text="*{station}">id</td>
+      <td th:text="*{walk}">id</td>
+    </tr>
+  </table>
+
 </body>
 </html>
