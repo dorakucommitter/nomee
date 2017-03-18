@@ -6,15 +6,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.dorakucommitter.Config;
 import com.dorakucommitter.domain.TempRestData;
 
 @Service
 public class GnaviApiService
 {
+    @Autowired
+    Config config;
+
     /**
      * ぐるなびからレストラン情報を取得し、取得したレストラン情報表示
      * のためにテンプレートに渡すデータ(オブジェクト配列)に成型する。
@@ -25,7 +30,7 @@ public class GnaviApiService
     public List<TempRestData> restSearch()
     {
         // アクセスキー
-        String acckey = "044ec29464ad5827815d83bba1db9d9a";
+        String acckey = config.getGnaviAccessKey();
         // 緯度
         String lat = "35.670082";
         // 経度

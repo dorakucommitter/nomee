@@ -4,3 +4,7 @@ spring:
 
 server:
   port: 8080
+
+config:
+  gurunavi:
+    accesskey: 044ec29464ad5827815d83bba1db9d9a
