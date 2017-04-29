@@ -11,10 +11,12 @@
 
   <h1>RSS Readerサンプル</h1>
 
-  <h3 th:text="${Rss.title}"></h3>
-  <ul th:each="item, stat : ${Rss.items}" th:object="${item}">
-    <li><a th:href="*{link}"><span th:text="*{title}"></span></a></li>
-  </ul>
+  <details th:each="item, stat : ${Rss.items}" th:object="${item}">
+    <summary><span th:text="*{title}"></span></summary>
+    <dl>
+      <a th:href="*{link}" target="_blank"><dd th:text="*{description}">サンプル</dd></a>
+    </dl>
+  </details>
 
 </body>
 </html>

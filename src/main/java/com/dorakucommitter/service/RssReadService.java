@@ -43,10 +43,12 @@ public class RssReadService
                 Element  element = (Element)item_list.item(i);
                 NodeList item_title = element.getElementsByTagName("title");
                 NodeList item_link  = element.getElementsByTagName("link");
+                NodeList item_description  = element.getElementsByTagName("description");
                 //System.out.println(" title: " + item_title.item(0).getFirstChild().getNodeValue());
                 //System.out.println(" link:  " + item_link.item(0).getFirstChild().getNodeValue() + "\n");
                 rssitem.setTitle(item_title.item(0).getFirstChild().getNodeValue());
                 rssitem.setLink(item_link.item(0).getFirstChild().getNodeValue());
+                rssitem.setDescription(item_description.item(0).getFirstChild().getNodeValue());
                 //System.out.println(rssitem.toString());
                 rss.setItems(rssitem);
                 rssitem = null;
