@@ -33,7 +33,6 @@ public class RssReadService
             /* Get and print Title of RSS Feed. */
             NodeList                channel = root.getElementsByTagName("channel");
             NodeList                title = ((Element)channel.item(0)).getElementsByTagName("title");
-            //System.out.println("\nTitle: " + title.item(0).getFirstChild().getNodeValue() + "\n");
             rss.setTitle(title.item(0).getFirstChild().getNodeValue());
 
             /* Get Node list of RSS items */
@@ -44,12 +43,11 @@ public class RssReadService
                 NodeList item_title = element.getElementsByTagName("title");
                 NodeList item_link  = element.getElementsByTagName("link");
                 NodeList item_description  = element.getElementsByTagName("description");
-                //System.out.println(" title: " + item_title.item(0).getFirstChild().getNodeValue());
-                //System.out.println(" link:  " + item_link.item(0).getFirstChild().getNodeValue() + "\n");
+
                 rssitem.setTitle(item_title.item(0).getFirstChild().getNodeValue());
                 rssitem.setLink(item_link.item(0).getFirstChild().getNodeValue());
                 rssitem.setDescription(item_description.item(0).getFirstChild().getNodeValue());
-                //System.out.println(rssitem.toString());
+
                 rss.setItems(rssitem);
                 rssitem = null;
             }
