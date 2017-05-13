@@ -27,9 +27,11 @@
           </div>
         </div>
         <div class="col-xs-8 border-red">
-          お店（意味深）の情報<br />
-          場所とか、値段とか<br />
-          その他いろいろ
+          <p th:text="${restInfo.name}"></p>
+          <p th:text="${restInfo.address}"></p>
+          <p th:text="${restInfo.tel}"></p>
+          <p th:text="${restInfo.prShort}"></p>
+          <img th:src="${restInfo.imageUrl1}" />
         </div>
       </div>
 

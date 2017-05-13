@@ -40,12 +40,10 @@
 			<scope>test</scope>
 		</dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-        <!-- lombok使うときはコメント解除してくださいな
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        -->
 
         <!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
         <dependency>

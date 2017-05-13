@@ -9,10 +9,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.dorakucommitter.Config;
 import com.dorakucommitter.domain.TempRestData;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class GnaviApiService
@@ -23,7 +23,7 @@ public class GnaviApiService
     /**
      * ぐるなびからレストラン情報を取得し、取得したレストラン情報表示
      * のためにテンプレートに渡すデータ(オブジェクト配列)に成型する。
-     * 
+     *
      * @return List<TempRestData>
      *          templateに渡す検索データ
      */
@@ -69,9 +69,13 @@ public class GnaviApiService
                 TempRestData t = new TempRestData();
                 t.setId(j.path("id").asText());
                 t.setName(j.path("name").asText());
+                t.setAddress(j.path("address").asText());
+                t.setTel(j.path("tel").asText());
                 t.setLine(j.path("access").path("line").asText());
+                t.setPrShort(j.path("pr").path("pr_short").asText());
                 t.setStation(j.path("access").path("station").asText());
                 t.setWalk(j.path("access").path("walk").asText() + "分");
+                t.setImageUrl1(j.path("image_url").path("shop_image1").asText());
                 restData.add(t);
             }
             return(restData);
