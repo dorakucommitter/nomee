@@ -29,15 +29,34 @@
           </div>
         </div>
         <div class="col-xs-8 border-red">
-          お店（意味深）の情報<br />
-          場所とか、値段とか<br />
-          その他いろいろ
+          <p th:text="${restInfo.name}"></p>
+          <p th:text="${restInfo.address}"></p>
+          <p th:text="${restInfo.tel}"></p>
+          <p th:text="${restInfo.prShort}"></p>
+          <img th:src="${restInfo.imageUrl1}" />
         </div>
       </div>
 
-    </div>
-    <div class="border-red">
 
+    <div class="border-red">
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="border-red">
+              <img src="https://www.pakutaso.com/assets_c/2015/10/MODELyuusei-thumb-160x160-19645.jpg" alt="ゆうせい" class="shadow" width="155"></img>
+            </div>
+        </div>
+        <div class="col-xs-8 border-red">
+          <details th:each="item, stat : ${Rss.items}" th:object="${item}">
+            <summary><span th:text="*{title}"></span></summary>
+              <dl>
+                <a th:href="*{link}" target="_blank"><dd th:text="*{description}">サンプル</dd></a>
+              </dl>
+          </details>
+        </div>
+    </div>
+    </div>
+
+<!--
       <table border="1">
         <tr th:each="item, stat : ${restData}" th:object="${item}">
           <td th:text="*{id}">id</td>
@@ -47,7 +66,7 @@
           <td th:text="*{walk}">id</td>
         </tr>
       </table>
-
+ -->
     </div>
   </div>
 </div>

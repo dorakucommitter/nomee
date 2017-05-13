@@ -1,13 +1,20 @@
 package com.dorakucommitter.domain;
 
+import lombok.Data;
+
+@Data
 public class TempRestData
 {
     private String id;
     private String name;
+    private String address;
+    private String tel;
     private String line;
+    private String prShort;
     private String station;
     private String walk;
     private String categorys;
+    private String imageUrl1;
 
     public String getId()
     {
