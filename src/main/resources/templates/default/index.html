@@ -3,23 +3,52 @@
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="UTF-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta http-equiv="Content-Script-Type" content="text/javascript" />
-  <title>ぐるなびレストラン検索結果</title>
+  <title>nomee | index</title>
+  <link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"></link>
+
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}" />
+  <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
 </head>
 <body>
 
-  <h3>ぐるなび検索結果</h3>
-  <table border="1" cellspacing="1">
-    <tr th:each="item, stat : ${restData}" th:object="${item}">
-      <td th:text="*{id}">id</td>
-      <td th:text="*{name}">id</td>
-      <td th:text="*{line}">id</td>
-      <td th:text="*{station}">id</td>
-      <td th:text="*{walk}">id</td>
-    </tr>
-  </table>
+<div class="container">
+  <div class="col">
+    <div class="border-red">
+
+      <div class="row">
+        <div class="col-xs-4">
+          <div class="col">
+            <div class="border-red">ロゴ</div>
+            <div class="border-red">お色気写真</div>
+          </div>
+        </div>
+        <div class="col-xs-8 border-red">
+          お店（意味深）の情報<br />
+          場所とか、値段とか<br />
+          その他いろいろ
+        </div>
+      </div>
+
+    </div>
+    <div class="border-red">
+
+      <table border="1">
+        <tr th:each="item, stat : ${restData}" th:object="${item}">
+          <td th:text="*{id}">id</td>
+          <td th:text="*{name}">id</td>
+          <td th:text="*{line}">id</td>
+          <td th:text="*{station}">id</td>
+          <td th:text="*{walk}">id</td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
