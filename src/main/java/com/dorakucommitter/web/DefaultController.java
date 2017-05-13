@@ -35,6 +35,7 @@ public class DefaultController {
          * (両者の紐付けはaddAttributeメソッドでやるので、同じ名前
          *  にする必要はない。)
          */
+        model.addAttribute("restInfo", restData.get(0));
         model.addAttribute("restData", restData);
 
         Rss rss = rssReadService.getRss("http://blog.livedoor.jp/dqnplus/index.rdf");
