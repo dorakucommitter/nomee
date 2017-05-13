@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.dorakucommitter.service.GnaviApiService;
 import com.dorakucommitter.domain.TempRestData;
+import com.dorakucommitter.service.GnaviApiService;
 
 @Controller
 public class DefaultController
@@ -32,6 +32,7 @@ public class DefaultController
          * (両者の紐付けはaddAttributeメソッドでやるので、同じ名前
          *  にする必要はない。)
          */
+        model.addAttribute("restInfo", restData.get(0));
         model.addAttribute("restData", restData);
         return "default/index";
     }
